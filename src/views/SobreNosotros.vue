@@ -1,134 +1,64 @@
 <template>
-  <div>
-    <MainMenu></MainMenu>
+  <div class="sobre-nosotros">
+    <img v-if="banner" :src="banner.imagen" class="banner" :alt="banner.titulo" />
 
-    <!-- <h1>{{ contador }}</h1> -->
-    <div class="mb-3">
-      <label for="lblId" class="form-label">ID</label>
-      <input v-model="estudiante.id" type="text" class="form-control" id="lblId" 
-             placeholder="Digite ID"
-      />
-    </div>
-    <div class="mb-3">
-      <label for="lblnombre" class="form-label">Nombre</label>
-      <input v-model="estudiante.nombre"  type="text" class="form-control"  id="lblnombre"
-        placeholder="Digite Nombre"
-      />
-    </div>
-    <!-- <button @click="cargarEstudiantes">Imprimir</button> -->
-    <button @click="guardarEstudiante" class="btn btn-success">Guardar</button>
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">NOMBRE</th>
-          <th> funcion </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="estudiante in estudiantes" :key="estudiante.id">
-          <th scope="row">{{ estudiante.id }}</th>
-          <td>{{ estudiante.nombre }}</td>
-          <td><button type="button" @click="eliminar(estudiante.id)" class="btn btn-danger">Eliminar</button></td>
-        </tr>
-      </tbody>
-    </table>
-    <!-- <img src="@/assets/mazda3.jpg" alt=""> -->
+    <h1>Sobre Nosotros</h1>
+    <p>
+      Somos una empresa local comprometida con ofrecer experiencias turísticas únicas en Santa Marta y sus alrededores.
+    </p>
+    <p>
+      Nuestra misión es promover el turismo sostenible, conectar a los viajeros con la riqueza cultural y natural de nuestra región,
+      y brindar un servicio de calidad con calidez humana.
+    </p>
+    <p>
+      Si deseas saber más sobre nosotros, no dudes en ponerte en contacto con nosotros o explorar nuestra página de tours.
+    </p>
   </div>
 </template>
 
 <script>
-import MainMenu from "@/components/MainMenu.vue";
 export default {
   name: "SobreNosotros",
-
-  //Datos inicializados
   data() {
     return {
-      mensaje: "Hola Mundo",
-      contador: 0,
-      estudiante: {
-        id: 0,
-        nombre: ""
-      },
-      estudiantes: [
-        {
-          id: 234567,
-          nombre: "Luis Mozo",
-        },
-        {
-          id: 234568,
-          nombre: "Juan Fontalvo",
-        },
-        {
-          id: 234569,
-          nombre: "Jhonny Jhonny",
-        },
-        {
-          id: 234570,
-          nombre: "Stiven Hernandez",
-        },
-      ],
+      banner: null,
     };
   },
-
-  //Metodos (Aquí van mis funciones)
-  methods: {
-    saludar: function () {
-      alert(this.mensaje);
-    },
-
-    incrementar: function () {
-      this.contador++;
-    },
-
-    cargarEstudiantes: function () {
-      for(let est of this.estudiantes){
-        console.log(est.id);
-      }
-    },
-
-    eliminar: function(id){
-      //Aquí voty a eliminar el estudiante
-      alert(id);
-      //Uni lineA
-
-      //Aquí actulsdkjfhdsjkhvsjkdhfkjdsfashdjkfsdhkfjadsf
-
-      console.log("ACT")
-
-    },
-
-    guardarEstudiante: function(){
-      let encontrado = false;
-      for(let est of this.estudiantes){
-        if(est.id === this.estudiante.id){
-          encontrado = true;
-        }
-      }
-
-      if(!encontrado && this.estudiante.id != 0 && this.estudiante.nombre != ""){
-        this.estudiantes.push(this.estudiante);
-        alert("Se ha agregado un nuevo estudiante");
-        this.estudiante = {id: 0, nombre: ""};
-      }else{
-        alert("NO se pudo agregar, el estudiante ya existe, o su estudiante no tiene un ID/nombre válidos");
-      }
-      
-
-    }
-  },
-
-  //Metodo creador de la vista
-  created: function () {
-     this.cargarEstudiantes();
-  },
-  //Componentes
-  components: {
-    MainMenu,
+  mounted() {
+    fetch("http://localhost:3000/api/tours/banners/1") // Ajusta si el ID cambia
+      .then((res) => res.json())
+      .then((data) => {
+        this.banner = data;
+      })
+      .catch((err) => console.error("Error cargando el banner:", err));
   },
 };
 </script>
 
-<style></style>
+<style scoped>
+.sobre-nosotros {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.banner {
+  width: 50%;
+  height: auto;
+  border-radius: 10px;
+  margin: 0 auto 20px auto;
+  display: block;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+</style>

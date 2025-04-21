@@ -1,0 +1,17 @@
+*ABRIMOS LA CARPETA DE LA API*
+C:\Users\audio\Desktop\Proyecto-de-DW-main>cd api-backend
+
+*INICAMOS LA API*
+C:\Users\audio\Desktop\Proyecto-de-DW-main\api-backend>npm run dev
+
+*MENSAJE DE INICIACIÓN EXISTOSA*
+> api-backend@1.0.0 dev
+> nodemon index.js
+
+[nodemon] 3.1.7
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,cjs,json
+[nodemon] starting `node index.js`
+Servidor escuchando en http://localhost:3000
+✅ Conexión a la base de datos establecida.

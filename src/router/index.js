@@ -7,23 +7,23 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView,
+    component: HomeView, // Vista de inicio
   },
   {
     path: '/tours',
     name: 'tours',
-    component: TourView,
+    component: TourView, // Vista de los tours
   },
   {
     path: '/sobre-nosotros',
     name: 'sobre-nosotros',
-    component: SobreNosotros,
+    component: SobreNosotros, // Vista "Sobre Nosotros"
   },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes,
+  routes, // Rutas definidas anteriormente
 });
 
 export default router;

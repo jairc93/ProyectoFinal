@@ -27,6 +27,10 @@
     <section class="about-us">
       <h2>Sobre Nosotros</h2>
       <p>Somos una agencia de viajes dedicada a ofrecer experiencias inolvidables en Santa Marta.</p>
+      <!-- Botón de redirección a la página sobre nosotros -->
+      <router-link to="/sobre-nosotros">
+        <button class="about-us-btn">¿Quieres saber más sobre nosotros?</button>
+      </router-link>
     </section>
 
     <!-- Sección Contáctenos -->
@@ -46,7 +50,7 @@
 import axios from "axios";
 
 export default {
-  name: "ToursView",
+  name: "TourView",
   data() {
     return {
       searchQuery: "",
@@ -181,5 +185,18 @@ form button {
   padding: 8px 12px;
   border: none;
   cursor: pointer;
+}
+.about-us-btn {
+  background-color: #ff7f50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 1.1em;
+}
+.about-us-btn:hover {
+  background-color: #ff4500;
 }
 </style>
