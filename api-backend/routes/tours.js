@@ -1,10 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../db'); // Asegúrate de que la conexión a la base de datos esté bien configurada
-
-// Rutas para tours
-
-// Obtener todos los tours
+const db = require('../db'); 
 router.get('/', (req, res) => {
   db.query('SELECT * FROM tours', (err, results) => {
     if (err) {
@@ -14,7 +10,7 @@ router.get('/', (req, res) => {
   });
 });
 
-// Obtener un tour por ID
+
 router.get('/:id', (req, res) => {
   const { id } = req.params;
   db.query('SELECT * FROM tours WHERE id = ?', [id], (err, results) => {
@@ -28,7 +24,7 @@ router.get('/:id', (req, res) => {
   });
 });
 
-// Crear un nuevo tour
+
 router.post('/', (req, res) => {
   const { titulo, ubicacion, imagen, descripcion, descripcion_completa, precio } = req.body;
   db.query(
@@ -43,7 +39,7 @@ router.post('/', (req, res) => {
   );
 });
 
-// Eliminar un tour
+
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
   db.query('DELETE FROM tours WHERE id = ?', [id], (err, results) => {
@@ -57,9 +53,9 @@ router.delete('/:id', (req, res) => {
   });
 });
 
-// Rutas para banners
 
-// Obtener todos los banners
+
+
 router.get('/banners', (req, res) => {
   db.query('SELECT * FROM banners', (err, results) => {
     if (err) {
@@ -69,7 +65,8 @@ router.get('/banners', (req, res) => {
   });
 });
 
-// Obtener un banner por ID
+
+
 router.get('/banners/:id', (req, res) => {
   const { id } = req.params;
   db.query('SELECT * FROM banners WHERE id = ?', [id], (err, result) => {
@@ -83,7 +80,6 @@ router.get('/banners/:id', (req, res) => {
   });
 });
 
-// Crear un nuevo banner
 router.post('/banners', (req, res) => {
   const { titulo, imagen, descripcion } = req.body;
   db.query(
@@ -98,7 +94,6 @@ router.post('/banners', (req, res) => {
   );
 });
 
-// Eliminar un banner
 router.delete('/banners/:id', (req, res) => {
   const { id } = req.params;
   db.query('DELETE FROM banners WHERE id = ?', [id], (err, results) => {

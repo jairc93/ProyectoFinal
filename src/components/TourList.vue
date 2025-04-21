@@ -4,7 +4,7 @@
 
     <div class="tour-container">
       <div v-for="tour in filteredTours" :key="tour.id" class="tour-card">
-        <!-- Ahora las imágenes se cargan directamente desde /assets en la carpeta public -->
+       
         <img :src="`/assets/${tour.imagen}`" :alt="tour.titulo" class="tour-image" />
         <h3>{{ tour.titulo }}</h3>
         <span class="location">{{ tour.ubicacion }}</span>

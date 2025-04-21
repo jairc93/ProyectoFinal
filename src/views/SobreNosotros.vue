@@ -25,7 +25,7 @@ export default {
     };
   },
   mounted() {
-    fetch("http://localhost:3000/api/tours/banners/1") // Ajusta si el ID cambia
+    fetch("http://localhost:3000/api/tours/banners/1") 
       .then((res) => res.json())
       .then((data) => {
         this.banner = data;

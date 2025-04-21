@@ -1,7 +1,4 @@
-// toursController.js
-
-const db = require('../db'); // Asegúrate de que la conexión a la base de datos esté bien configurada
-
+const db = require('../db'); 
 // Obtener todos los tours
 const getAllTours = (req, res) => {
   db.query('SELECT * FROM tours', (err, results) => {
