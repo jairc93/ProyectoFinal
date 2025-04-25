@@ -1,29 +1,23 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import TourView from '../views/TourView.vue';
-import SobreNosotros from '../views/SobreNosotros.vue';
-import HomeView from '../views/HomeView.vue';
+import SobreNosotrosView from '../views/SobreNosotros.vue';
+import ContactoView from '../views/ContactoView.vue';
+import DestinosPopularesView from '../views/DestinosPopularesView.vue';
+import ActividadesView from '../views/ActividadesView.vue';
+import GaleriaView from '../views/GaleriaView.vue';
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView, // Vista de inicio
-  },
-  {
-    path: '/tours',
-    name: 'tours',
-    component: TourView, // Vista de los tours
-  },
-  {
-    path: '/sobre-nosotros',
-    name: 'sobre-nosotros',
-    component: SobreNosotros, // Vista "Sobre Nosotros"
-  },
+  { path: '/tours', name: 'Tours', component: TourView },
+  { path: '/sobre-nosotros', name: 'SobreNosotros', component: SobreNosotrosView },
+  { path: '/contacto', name: 'Contacto', component: ContactoView },
+  { path: '/destinos-populares', name: 'DestinosPopulares', component: DestinosPopularesView },
+  { path: '/actividades', name: 'Actividades', component: ActividadesView },
+  { path: '/galeria', name: 'Galeria', component: GaleriaView }
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes, // Rutas definidas anteriormente
+  history: createWebHistory(),
+  routes
 });
 
 export default router;
